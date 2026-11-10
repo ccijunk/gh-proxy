@@ -75,15 +75,10 @@ docker run -d --name="gh-proxy-py" \
 
 安装依赖（请使用python3）
 
-```pip install flask requests```
+```pip install aiohttp uvloop```
 
-按需求修改`app/main.py`的前几项配置
-
-*注意:* 可能需要在`return Response`前加两行
-```python3
-if 'Transfer-Encoding' in headers:
-    headers.pop('Transfer-Encoding')
-```
+按需求修改`app/main.py`的前几项配置，然后运行 `python app/main.py`。
+应用默认监听 `127.0.0.1:8000`，前面需要一层 nginx 反向代理（容器镜像内已包含）。
 
 ### 注意
 
